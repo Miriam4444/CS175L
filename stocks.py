@@ -1,3 +1,5 @@
+#CS175L
+#Miriam Abecasis
 #stocks program
 comm_percentage_stock_purchase = float(input("Enter commission rate percentage (ex 0.03) on stock purchase: "))
 comm_percentage_stock_sale = float(input("Enter commission rate percentage (ex 0.03) on stock sale: "))
