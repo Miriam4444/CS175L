@@ -1,65 +1,66 @@
 import math
 import turtle
 
-#variable names
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 400
 ANIMATION_SPEED = 0
-NUM_SIDES = 8
-LENGTH = 100
-ANGLE = 45
-TEXT_X = -5
-TEXT_Y = -10
 
-#size the window
-turtle.setup(WINDOW_WIDTH, WINDOW_HEIGHT)
-s = LENGTH
-x = s / math.sqrt(2)
-diameter = s + (2 * x)
-
-#turtle.pensize(10)
-
-#center turtle
-turtle.penup()
-turtle.goto(-50, (diameter/2))
-turtle.pendown()
-
-#make it red
-turtle.color("red")
-turtle.fillcolor("red")
-turtle.begin_fill()
-
-for i in range(8):
-    turtle.forward(LENGTH)
-    turtle.right(ANGLE)
-turtle.end_fill()
-
- #white octagon
-def white_octagon():
-    NUM_SIDES = 8
-    LENGTH = 90
-    ANGLE = 45
-    TEXT_X = -5
-    TEXT_Y = -10
+def make_a_shape():
+    import math
+    import turtle
+    #variable names
+    a = int(input("How many sides do you want? "))
+    b = int(input("Choose a side length "))
+    NUM_SIDES = a
+    LENGTH = b
+    ANGLE = 360 / NUM_SIDES
+    #size the window
+    turtle.setup(WINDOW_WIDTH, WINDOW_HEIGHT)
     s = LENGTH
-    x = s / math.sqrt(2)
-    diameter = s + (2 * x)
-    turtle.color("white")
-    turtle.pensize(10)
+    #x = s / math.sqrt(2)
+    #diameter = s + (2 * x)
+
+    half_angle = ANGLE / 2
+    y_coordinate = math.tan(half_angle * (180 /math.pi)) * (s / 2)
+    #format shape
+    outline_color = input("Choose an outline color ")
+    fill_color = input("Choose a fill color ")
+    pen_size = int(input("Choose a pen size "))
+    turtle.color(outline_color)
+    turtle.fillcolor(fill_color)
+    turtle.pensize(pen_size)
+    turtle.begin_fill()
+    #center turtle
     turtle.penup()
-    turtle.goto(-45, (diameter/2))
+    turtle.goto((-s / 2), y_coordinate)
     turtle.pendown()
-    for i in range(8):
+    #make shape
+    for i in range(NUM_SIDES):
         turtle.forward(LENGTH)
         turtle.right(ANGLE)
+    turtle.end_fill()
+    #go back to (0,0)
+    turtle.penup()
+    turtle.goto(0,0)
+    turtle.pendown()
+    
+    
 
-white_octagon()
+for i in range(2):
+    print(f"octagon #{i+1}: ")
+    make_a_shape()
 
-turtle.penup()
-turtle.goto(0,-36)
-turtle.pendown()
-turtle.write("STOP" , align = 'center' , font = ("Arial" , 48 , "bold"))
-
-
-
+#write text
+words = input("Do you want text? ")
+if words == "yes":
+    size = int(input("Choose font size: "))
+    text = input("Enter text: ")
+    y = int((size / 4) * 3)
+    turtle.penup()
+    turtle.goto(0,-y)
+    turtle.pendown()
+    turtle.write(text , align = 'center' , font = ("Arial" , size , "bold"))
+else:
+    print("Okay.")
+ 
 
