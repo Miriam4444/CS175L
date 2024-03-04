@@ -28,12 +28,12 @@ def doConversion():
     #ConvertToCentigrade, sends Fahrenheit gets back Centigrade
     celsius = convertToCentigrade()
     #prints for example: 'Fahrenheit: xx Kelvin xx Centigrade: xx'
-    print(f'Fahrenheit: {F_temp} Kelvin: {kelvin} Centigrade: {celsius}')
+    print(f'Fahrenheit: {F_temp :.2f} Kelvin: {kelvin :.2f} Centigrade: {celsius :.2f}')
     #pass
 
 def repeat():
     #Inputs How many conversions would you like to do this time?
-    how_many = int(input("How many conversions would you like to do this time?"))
+    how_many = int(input("How many conversions would you like to do this time? "))
     #for x in range how many
         #doConversion()
     for i in range(how_many):
@@ -44,7 +44,7 @@ def repeat():
 
 def controlLoop():
     #Inputs 'Do you want to do some conversions(Yes or No)?'
-    conversions = input("Do you want to do some conversions(Yes or No)?")
+    conversions = input("Do you want to do some conversions(Yes or No)? ")
     #if 'yes' repeat()
     if conversions == "yes":
         repeat()
@@ -52,11 +52,11 @@ def controlLoop():
 
 def getFahrenheit():
     #Inputs 'Enter Fahrenheit temperature (must be -50 to 130):'
-    F_temp1 = float(input("Enter Fahrenheit temperature (must be -50 to 130):"))
+    F_temp1 = float(input("Enter Fahrenheit temperature (must be -50 to 130): "))
     #(validation loop)'Please re-enter'
     while True:
         if (F_temp1 <= -50) or (F_temp1 >= 130): 
-            F_temp1 = float(input("Please re-enter"))
+            F_temp1 = float(input("Please re-enter "))
         else:
             break
     global F_temp
